@@ -24,6 +24,7 @@ const projectIcons: Record<string, IconName> = {
   "botnext-ai-integration": "ai",
   "crm-analytics": "server",
   "botnext-executive-analytics": "nodes",
+  "hss-finance": "bank",
   "hss-health-tracker": "monitor",
 };
 

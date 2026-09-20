@@ -3,21 +3,28 @@ import type { Profile } from "@/types";
 export const profile: Profile = {
   name: "Harry Sousa Silva",
   professionalName: "Harry Sousa",
-  role: "Analista de Dados na Falavinha Next",
-  headline: "Software Engineering • AI • Automation • Data",
+  role: "Analista de Dados — Falavinha Next",
+  headline: "Full Stack Developer | TypeScript • Node.js • React • PostgreSQL • IA & Automação",
   title:
     "Construo sistemas, integrações e automações com software, dados e Inteligência Artificial.",
   description:
-    "Analista de Dados com atuação em desenvolvimento, integrações, automações e soluções com IA, em constante evolução para Engenharia de Software com Inteligência Artificial aplicada.",
-  location: "Brasil",
-  stack: ["TypeScript", "Node.js", "Python", "PostgreSQL", "React", "AI Agents"],
+    "Desenvolvedor Full Stack com foco em Backend, com experiência prática em dados, APIs, integrações, automações e soluções com Inteligência Artificial.",
+  location: "Curitiba — PR",
+  stack: [
+    "TypeScript",
+    "Node.js",
+    "PostgreSQL",
+    "React",
+    "APIs REST",
+    "IA & Automação",
+    "Python",
+  ],
   about: {
     paragraphs: [
-      "Sou Harry Sousa, Analista de Dados com forte atuação em tecnologia, automação e desenvolvimento de sistemas.",
-      "Minha trajetória começou na análise de dados, com SQL, Excel e Power BI, e evoluiu gradualmente para desenvolvimento de software, integrações de APIs, automações e Inteligência Artificial.",
-      "Hoje trabalho desenvolvendo e integrando soluções que combinam APIs REST, webhooks, bancos de dados, automações, agentes de IA e aplicações web.",
-      "Tenho especial interesse em Engenharia de Software com Inteligência Artificial aplicada: transformar problemas reais de negócio em sistemas, integrações e automações práticas.",
-      "Estou constantemente construindo projetos para aprofundar conhecimentos em arquitetura de software, backend, frontend, bancos de dados, IA e sistemas escaláveis.",
+      "Desenvolvedor Full Stack com foco em Backend, atuando profissionalmente com dados, integrações, automações e soluções com IA.",
+      "Tenho experiência prática construindo APIs, serviços de sincronização, aplicações web e integrações entre sistemas usando TypeScript, Node.js, PostgreSQL e tecnologias de automação.",
+      "Atualmente sou Analista de Dados na Falavinha Next, onde meu trabalho une dados, integrações e automações, com IA aplicada a processos e decisões.",
+      "Minha trajetória em dados fortaleceu minha visão sobre modelagem, qualidade da informação e construção de soluções orientadas a problemas reais.",
     ],
     areas: [
       "Software Engineering",
@@ -30,5 +37,7 @@ export const profile: Profile = {
   },
   links: {
     linkedin: "https://linkedin.com/in/harry-sousa-a81554266/",
+    github: "https://github.com/Harry7432",
+    email: "harrysousasilva@gmail.com",
   },
 };
