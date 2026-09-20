@@ -9,6 +9,7 @@ export type IconName =
   | "mail"
   | "github"
   | "linkedin"
+  | "whatsapp"
   | "monitor"
   | "server"
   | "ai"
@@ -84,6 +85,12 @@ const iconPaths: Record<IconName, ReactNode> = {
       <path d="M7.5 10v7" />
       <path d="M7.5 7.2v.1" />
       <path d="M12 17v-4a2 2 0 014 0v4" />
+    </>
+  ),
+  whatsapp: (
+    <>
+      <path d="M20 11.5a8 8 0 0 1-11.8 7.05L4 20l1.45-4.05A8 8 0 1 1 20 11.5Z" />
+      <path d="M9.2 8.2c.25-.3.55-.3.8-.05l.8 1c.2.25.2.5.05.75l-.5.7c.65 1.3 1.7 2.35 3 3l.7-.5c.25-.15.5-.15.75.05l1 .8c.25.25.25.55-.05.8-.45.4-1.05.6-1.65.45-2.8-.7-5.2-3.1-5.9-5.9-.15-.6.05-1.2.45-1.65Z" />
     </>
   ),
   monitor: (

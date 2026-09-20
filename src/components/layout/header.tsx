@@ -3,12 +3,13 @@ import { profile } from "@/data/profile";
 import { NAV_LINKS, siteConfig } from "@/lib/constants";
 import { Container } from "@/components/ui/container";
 import { SocialLink } from "@/components/ui/social-link";
+import { Icon } from "@/components/ui/icon";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { MobileMenu } from "@/components/layout/mobile-menu";
 import { HeaderShell } from "@/components/layout/header-shell";
 
 export function Header() {
-  const { linkedin, github } = profile.links;
+  const { linkedin, github, whatsapp } = profile.links;
 
   return (
     <HeaderShell>
@@ -43,7 +44,6 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2 sm:gap-stack-sm">
-          <ThemeToggle />
           {linkedin && (
             <SocialLink href={linkedin} label="LinkedIn">
               <svg
@@ -68,6 +68,12 @@ export function Header() {
               </svg>
             </SocialLink>
           )}
+          {whatsapp && (
+            <SocialLink href={whatsapp} label="WhatsApp">
+              <Icon name="whatsapp" className="h-4 w-4" />
+            </SocialLink>
+          )}
+          <ThemeToggle />
           <MobileMenu links={NAV_LINKS} />
         </div>
       </Container>

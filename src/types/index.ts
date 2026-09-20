@@ -6,6 +6,7 @@ export interface Link {
 export interface SocialLinks {
   linkedin?: string;
   github?: string;
+  whatsapp?: string;
   email?: string;
   instagram?: string;
 }

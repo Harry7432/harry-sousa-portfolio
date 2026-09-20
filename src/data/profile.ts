@@ -38,6 +38,7 @@ export const profile: Profile = {
   links: {
     linkedin: "https://linkedin.com/in/harry-sousa-a81554266/",
     github: "https://github.com/Harry7432",
+    whatsapp: "https://wa.me/5541987389960",
     email: "harrysousasilva@gmail.com",
   },
 };

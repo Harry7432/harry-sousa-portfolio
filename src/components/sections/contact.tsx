@@ -8,7 +8,7 @@ import { IconTile } from "@/components/ui/icon";
 import { ContactForm } from "@/components/sections/contact-form";
 
 export function Contact() {
-  const { linkedin, github, email } = profile.links;
+  const { linkedin, github, whatsapp, email } = profile.links;
 
   const channels = [
     linkedin && {
@@ -23,8 +23,19 @@ export function Contact() {
       href: github,
       icon: "github" as const,
     },
+    whatsapp && {
+      label: "WhatsApp",
+      value: "41 98738-9960",
+      href: whatsapp,
+      icon: "whatsapp" as const,
+    },
     email && { label: "E-mail", value: email, href: `mailto:${email}`, icon: "mail" as const },
-  ].filter(Boolean) as { label: string; value: string; href: string; icon: "linkedin" | "github" | "mail" }[];
+  ].filter(Boolean) as {
+    label: string;
+    value: string;
+    href: string;
+    icon: "linkedin" | "github" | "whatsapp" | "mail";
+  }[];
 
   return (
     <Section id="contato">
