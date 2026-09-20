@@ -3,7 +3,7 @@ import type { Project, ProjectStatus } from "@/types";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { IconTile, type IconName } from "@/components/ui/icon";
-import { Card } from "@/components/ui/card";
+import { SpotlightCard } from "@/components/ui/spotlight-card";
 import { cn } from "@/lib/utils";
 
 const statusLabels: Record<ProjectStatus, string> = {
@@ -70,8 +70,13 @@ function FlowPanel({ project }: { project: Project }) {
 function TechBadges({ technologies }: { technologies: string[] }) {
   return (
     <div className="flex flex-wrap gap-stack-2xs">
-      {technologies.map((tech) => (
-        <Badge key={tech} variant="neutral">
+      {technologies.map((tech, index) => (
+        <Badge
+          key={tech}
+          variant="neutral"
+          className="opacity-80 transition-[opacity,transform] duration-300 ease-out [transform:translateY(2px)] group-hover:translate-y-0 group-hover:opacity-100"
+          style={{ transitionDelay: `${Math.min(index, 6) * 35}ms` }}
+        >
           {tech}
         </Badge>
       ))}
@@ -93,6 +98,7 @@ function ProjectLinks({ githubUrl, demoUrl }: Pick<Project, "githubUrl" | "demoU
           href={githubUrl}
           target="_blank"
           rel="noopener noreferrer"
+          className="transition-shadow duration-300 group-hover:shadow-hover"
         >
           Ver no GitHub
         </Button>
@@ -104,6 +110,7 @@ function ProjectLinks({ githubUrl, demoUrl }: Pick<Project, "githubUrl" | "demoU
           href={demoUrl}
           target="_blank"
           rel="noopener noreferrer"
+          className="transition-transform duration-300 group-hover:translate-x-0.5"
         >
           Demo →
         </Button>
@@ -134,13 +141,16 @@ export function ProjectCard({
     </>
   );
 
+  const iconClassName =
+    "transition-transform duration-300 ease-out group-hover:scale-110 group-hover:-rotate-3";
+
   if (featured) {
     return (
-      <Card
+      <SpotlightCard
         as="article"
         hover
         className={cn(
-          "flex flex-col gap-stack-lg p-stack-xl",
+          "group flex flex-col gap-stack-lg p-stack-xl transition-transform duration-300 ease-out",
           "hover:-translate-y-2",
           large && "lg:grid lg:grid-cols-2 lg:items-start lg:gap-stack-2xl lg:p-stack-2xl",
           className,
@@ -150,7 +160,7 @@ export function ProjectCard({
           <div className="flex flex-wrap items-center justify-between gap-stack-sm">
             {cartouches}
           </div>
-          <IconTile name={icon} tone="project" />
+          <IconTile name={icon} tone="project" className={iconClassName} />
           <h3 className="text-h2 font-semibold text-foreground-strong">{project.name}</h3>
           <p className="text-foreground-secondary">{project.description}</p>
           <ul className="grid gap-stack-xs sm:grid-cols-2">
@@ -173,23 +183,23 @@ export function ProjectCard({
           <FlowPanel project={project} />
           <TechBadges technologies={project.technologies} />
         </div>
-      </Card>
+      </SpotlightCard>
     );
   }
 
   return (
-    <Card
+    <SpotlightCard
       as="article"
       hover
       className={cn(
-        "flex h-full flex-col gap-stack p-stack-lg hover:-translate-y-2",
+        "group flex h-full flex-col gap-stack p-stack-lg transition-transform duration-300 ease-out hover:-translate-y-2",
         className,
       )}
     >
       <div className="flex flex-wrap items-center justify-between gap-stack-sm">
         {cartouches}
       </div>
-      <IconTile name={icon} tone="project" />
+      <IconTile name={icon} tone="project" className={iconClassName} />
       <h3 className="text-h3 font-semibold text-foreground-strong">{project.name}</h3>
       <p className="text-small text-foreground-secondary">{project.shortDescription}</p>
       <div className="mt-auto flex flex-col gap-stack">
@@ -197,6 +207,6 @@ export function ProjectCard({
         <TechBadges technologies={project.technologies} />
         <ProjectLinks githubUrl={project.githubUrl} demoUrl={project.demoUrl} />
       </div>
-    </Card>
+    </SpotlightCard>
   );
 }

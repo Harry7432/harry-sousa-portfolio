@@ -4,6 +4,7 @@ import { Card } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { TimelineList } from "@/components/sections/timeline-list";
 
 export function Experience() {
   return (
@@ -15,7 +16,7 @@ export function Experience() {
           description="Trajetória em análise de dados, integração de sistemas, automações e Inteligência Artificial aplicada."
         />
 
-        <ol className="timeline flex flex-col gap-stack-xl">
+        <TimelineList className="flex flex-col gap-stack-xl">
           {experience.map((item) => {
             const isActive = item.period?.toLowerCase() === "atual";
 
@@ -33,7 +34,7 @@ export function Experience() {
                   as="article"
                   variant="glass-panel"
                   hover
-                  className="overflow-hidden p-0 hover:translate-x-1.5"
+                  className="overflow-hidden p-0 transition-transform duration-300 ease-out hover:translate-x-1.5"
                 >
                   <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))]">
                     <div className="flex min-w-0 flex-col gap-stack border-b border-[var(--ds-glass-border)] p-stack-xl lg:border-b-0 lg:border-r lg:p-stack-2xl">
@@ -84,7 +85,7 @@ export function Experience() {
               </li>
             );
           })}
-        </ol>
+        </TimelineList>
       </Container>
     </Section>
   );

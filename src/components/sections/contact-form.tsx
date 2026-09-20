@@ -6,9 +6,9 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const FIELD_BASE =
-  "w-full rounded-chip border bg-[var(--ds-glass-fill)] px-3 py-2.5 text-small text-foreground placeholder:text-foreground-muted transition-colors duration-200 focus:outline-none focus:ring-2";
+  "w-full rounded-chip border bg-[var(--ds-glass-fill)] px-3 py-2.5 text-small text-foreground placeholder:text-foreground-muted transition-[border-color,box-shadow] duration-200 focus:outline-none focus:ring-2";
 const FIELD_NORMAL =
-  "border-[var(--ds-glass-border-2)] focus:border-teal-bright focus:ring-teal-bright/30";
+  "border-[var(--ds-glass-border-2)] focus:border-teal-bright focus:ring-teal-bright/30 focus:shadow-[0_0_0_6px_rgb(var(--ds-teal-bright-rgb)/0.08)]";
 const FIELD_ERROR = "border-danger focus:border-danger focus:ring-danger/30";
 
 interface ContactValues {

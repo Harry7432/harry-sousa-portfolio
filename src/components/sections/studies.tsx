@@ -2,6 +2,7 @@ import { studies } from "@/data/studies";
 import type { StudyGroup } from "@/types";
 import { Card } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
+import { Reveal } from "@/components/ui/reveal";
 import { Section } from "@/components/ui/section";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { cn } from "@/lib/utils";
@@ -30,7 +31,10 @@ export function Studies() {
           description="Minha evolução parte de dados e automação e segue rumo à engenharia de software e Inteligência Artificial aplicada — integrando as duas frentes, sem abrir mão da base em dados."
         />
 
-        <ol className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-stack">
+        <Reveal
+          as="ol"
+          className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-stack"
+        >
           {groupOrder.map((group, index) => {
             const items = studies.filter((study) => study.status === group);
             const isActive = group === "aplicando";
@@ -74,7 +78,7 @@ export function Studies() {
               </li>
             );
           })}
-        </ol>
+        </Reveal>
       </Container>
     </Section>
   );

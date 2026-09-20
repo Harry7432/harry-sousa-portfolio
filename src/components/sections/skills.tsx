@@ -3,6 +3,7 @@ import type { SkillCategory } from "@/types";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
+import { Reveal } from "@/components/ui/reveal";
 import { Section } from "@/components/ui/section";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { IconTile, type IconName } from "@/components/ui/icon";
@@ -27,15 +28,18 @@ export function Skills() {
           description="Tecnologias e áreas que utilizo para construir sistemas, integrações, automações e soluções orientadas a dados."
         />
 
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-[18px]">
+        <Reveal className="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-[18px]">
           {skills.map((category: SkillCategory) => (
             <Card
               key={category.category}
               variant="glass-sm"
               hover
-              className="flex flex-col gap-stack-sm p-stack-lg hover:-translate-y-[5px]"
+              className="group flex flex-col gap-stack-sm p-stack-lg transition-transform duration-300 ease-out hover:-translate-y-[5px]"
             >
-              <IconTile name={categoryIcons[category.category] ?? "code"} />
+              <IconTile
+                name={categoryIcons[category.category] ?? "code"}
+                className="transition-transform duration-300 ease-out group-hover:scale-110 group-hover:rotate-3"
+              />
               <h4 className="text-h4 font-semibold text-foreground-strong">
                 {category.category}
               </h4>
@@ -53,7 +57,7 @@ export function Skills() {
               </div>
             </Card>
           ))}
-        </div>
+        </Reveal>
       </Container>
     </Section>
   );

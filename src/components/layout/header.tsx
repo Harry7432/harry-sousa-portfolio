@@ -3,13 +3,15 @@ import { profile } from "@/data/profile";
 import { NAV_LINKS, siteConfig } from "@/lib/constants";
 import { Container } from "@/components/ui/container";
 import { SocialLink } from "@/components/ui/social-link";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { MobileMenu } from "@/components/layout/mobile-menu";
+import { HeaderShell } from "@/components/layout/header-shell";
 
 export function Header() {
   const { linkedin, github } = profile.links;
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[var(--ds-glass-border)] bg-[var(--ds-bg-2)]/70 backdrop-blur-md">
+    <HeaderShell>
       <a
         href="#conteudo"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-chip focus:border focus:border-[var(--ds-teal-border)] focus:bg-[var(--ds-bg-1)] focus:px-4 focus:py-2 focus:text-small focus:text-foreground-strong focus:shadow-card"
@@ -33,14 +35,15 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="rounded-chip px-3 py-2 text-small text-foreground-secondary transition-colors duration-200 hover:text-foreground-strong active:text-teal-bright"
+              className="nav-link rounded-chip px-3 py-2 text-small text-foreground-secondary transition-colors duration-200 hover:text-foreground-strong active:text-teal-bright"
             >
               {item.label}
             </Link>
           ))}
         </nav>
 
-        <div className="flex items-center gap-stack-sm">
+        <div className="flex items-center gap-2 sm:gap-stack-sm">
+          <ThemeToggle />
           {linkedin && (
             <SocialLink href={linkedin} label="LinkedIn">
               <svg
@@ -68,6 +71,6 @@ export function Header() {
           <MobileMenu links={NAV_LINKS} />
         </div>
       </Container>
-    </header>
+    </HeaderShell>
   );
 }

@@ -1,8 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Sans, Space_Grotesk } from "next/font/google";
+import Script from "next/script";
 import type { ReactNode } from "react";
 import { siteConfig } from "@/lib/constants";
 import { BackgroundDecoration } from "@/components/layout/background-decoration";
+import { THEME_INIT_SCRIPT } from "@/lib/theme";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -48,7 +50,10 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#16213e",
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#16213e" },
+    { media: "(prefers-color-scheme: light)", color: "#f5f8fc" },
+  ],
 };
 
 interface RootLayoutProps {
@@ -60,8 +65,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html
       lang="pt-BR"
       className={`${spaceGrotesk.variable} ${ibmPlexSans.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
       <body className="flex min-h-full flex-col text-foreground">
+        <Script id="theme-init" strategy="beforeInteractive">
+          {THEME_INIT_SCRIPT}
+        </Script>
         <BackgroundDecoration />
         <div className="relative z-10 flex min-h-full flex-1 flex-col">
           {children}
