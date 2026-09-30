@@ -97,7 +97,7 @@ export const projects: Project[] = [
       "interface responsiva",
     ],
     flow: ["Site", "Catálogo", "WhatsApp"],
-    status: "em desenvolvimento",
+    status: "projeto funcional",
     demoUrl: "https://hadassafesta.storehss.com/",
     demoLabel: "Ver projeto",
     preview: {
