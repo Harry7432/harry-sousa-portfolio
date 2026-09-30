@@ -1,3 +1,5 @@
+import Image from "next/image";
+import Link from "next/link";
 import { Fragment } from "react";
 import type { Project, ProjectStatus } from "@/types";
 import { Badge } from "@/components/ui/badge";
@@ -84,7 +86,66 @@ function TechBadges({ technologies }: { technologies: string[] }) {
   );
 }
 
-function ProjectLinks({ githubUrl, demoUrl }: Pick<Project, "githubUrl" | "demoUrl">) {
+function ProjectPreview({
+  name,
+  preview,
+  demoUrl,
+  demoLabel,
+}: Pick<Project, "name" | "preview" | "demoUrl" | "demoLabel">) {
+  if (!preview) {
+    return null;
+  }
+
+  const hasVerticalPan = preview.animation === "vertical-pan";
+  const image = (
+    <div
+      className={cn(
+        "relative overflow-hidden rounded-chip border border-[var(--ds-glass-border)] bg-[var(--ds-glass-fill)]",
+        hasVerticalPan && "aspect-[9/4]",
+      )}
+    >
+      <Image
+        src={preview.src}
+        alt={preview.alt}
+        width={preview.width}
+        height={preview.height}
+        sizes="(max-width: 767px) calc(100vw - 3rem), (max-width: 1199px) 50vw, 40vw"
+        className={cn(
+          "block h-auto w-full",
+          hasVerticalPan &&
+            "motion-safe:transition-transform motion-safe:duration-[4500ms] motion-safe:ease-in-out motion-safe:group-hover/preview:-translate-y-[14%] motion-safe:group-focus-visible/preview:-translate-y-[14%]",
+        )}
+      />
+      {demoUrl && (
+        <span className="absolute bottom-stack-sm right-stack-sm rounded-full border border-[var(--ds-glass-border)] bg-[var(--ds-bg-1)] px-3 py-1.5 text-caption font-medium text-foreground-strong shadow-card">
+          {demoLabel ?? "Ver projeto"}
+        </span>
+      )}
+    </div>
+  );
+
+  if (!demoUrl) {
+    return image;
+  }
+
+  return (
+    <Link
+      href={demoUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`${demoLabel ?? "Ver projeto"}: ${name} (abre em nova aba)`}
+      className="group/preview block cursor-pointer rounded-chip transition-shadow duration-300 hover:shadow-hover"
+    >
+      {image}
+    </Link>
+  );
+}
+
+function ProjectLinks({
+  githubUrl,
+  demoUrl,
+  demoLabel,
+}: Pick<Project, "githubUrl" | "demoUrl" | "demoLabel">) {
   if (!githubUrl && !demoUrl) {
     return null;
   }
@@ -112,7 +173,7 @@ function ProjectLinks({ githubUrl, demoUrl }: Pick<Project, "githubUrl" | "demoU
           rel="noopener noreferrer"
           className="transition-transform duration-300 group-hover:translate-x-0.5"
         >
-          Demo →
+          {demoLabel ?? "Demo →"}
         </Button>
       )}
     </div>
@@ -177,9 +238,19 @@ export function ProjectCard({
               </li>
             ))}
           </ul>
-          <ProjectLinks githubUrl={project.githubUrl} demoUrl={project.demoUrl} />
+          <ProjectLinks
+            githubUrl={project.githubUrl}
+            demoUrl={project.demoUrl}
+            demoLabel={project.demoLabel}
+          />
         </div>
         <div className="flex flex-col gap-stack">
+          <ProjectPreview
+            name={project.name}
+            preview={project.preview}
+            demoUrl={project.demoUrl}
+            demoLabel={project.demoLabel}
+          />
           <FlowPanel project={project} />
           <TechBadges technologies={project.technologies} />
         </div>
@@ -203,9 +274,19 @@ export function ProjectCard({
       <h3 className="text-h3 font-semibold text-foreground-strong">{project.name}</h3>
       <p className="text-small text-foreground-secondary">{project.shortDescription}</p>
       <div className="mt-auto flex flex-col gap-stack">
+        <ProjectPreview
+          name={project.name}
+          preview={project.preview}
+          demoUrl={project.demoUrl}
+          demoLabel={project.demoLabel}
+        />
         <FlowPanel project={project} />
         <TechBadges technologies={project.technologies} />
-        <ProjectLinks githubUrl={project.githubUrl} demoUrl={project.demoUrl} />
+        <ProjectLinks
+          githubUrl={project.githubUrl}
+          demoUrl={project.demoUrl}
+          demoLabel={project.demoLabel}
+        />
       </div>
     </SpotlightCard>
   );

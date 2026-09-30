@@ -23,7 +23,14 @@ export const projects: Project[] = [
     ],
     flow: ["Frontend", "Backend", "PostgreSQL"],
     status: "em desenvolvimento",
-    githubUrl: "https://github.com/Harry7432/hss-finance",
+    demoUrl: "https://homol.storehss.com",
+    demoLabel: "Homologação",
+    preview: {
+      src: "/projects/hss-finace.png",
+      alt: "Tela de login da aplicação HSS Finance em ambiente de homologação",
+      width: 1912,
+      height: 900,
+    },
     featured: true,
   },
   {
@@ -70,7 +77,36 @@ export const projects: Project[] = [
     ],
     flow: ["Frontend", "Backend", "PostgreSQL"],
     status: "em desenvolvimento",
+    githubUrl: "https://github.com/Harry7432/Billingflow",
     featured: true,
+  },
+  {
+    id: "hadassa-festas",
+    slug: "hadassa-festas",
+    name: "Hadassa Festas",
+    shortDescription:
+      "Site responsivo para apresentar kits de decoração, galeria de festas e contato direto via WhatsApp.",
+    description:
+      "Site responsivo para apresentar kits de decoração, galeria de festas e contato direto via WhatsApp.",
+    category: "Frontend / Site Institucional",
+    technologies: ["TypeScript", "React", "Vite", "Tailwind CSS"],
+    highlights: [
+      "catálogo de kits",
+      "galeria de festas",
+      "contato via WhatsApp",
+      "interface responsiva",
+    ],
+    flow: ["Site", "Catálogo", "WhatsApp"],
+    status: "em desenvolvimento",
+    demoUrl: "https://hadassafesta.storehss.com/",
+    demoLabel: "Ver projeto",
+    preview: {
+      src: "/projects/hadassa-festas.png",
+      alt: "Página inicial do site Hadassa Festas com catálogo de kits de decoração",
+      width: 1749,
+      height: 906,
+      animation: "vertical-pan",
+    },
   },
   {
     id: "botnext-ai-integration",

@@ -35,6 +35,14 @@ export type ProjectStatus =
   | "projeto funcional"
   | "projeto pessoal";
 
+export interface ProjectPreview {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  animation?: "vertical-pan";
+}
+
 export interface Project {
   id: string;
   slug: string;
@@ -49,6 +57,8 @@ export interface Project {
   featured?: boolean;
   githubUrl?: string;
   demoUrl?: string;
+  demoLabel?: string;
+  preview?: ProjectPreview;
 }
 
 export interface SkillCategory {
